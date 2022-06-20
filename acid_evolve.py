@@ -25,21 +25,18 @@ def generate_final(seconds, prompt = "psychidelic rainbow fire", framerate = 30)
 
     print("\n\n\nPHASE 1: Image generation")
 
-    os.chdir("big_sleep/results")
+    os.chdir("results")
     if "acid_evolve" not in os.listdir("."):
         print("Making acid_evolve directory")
         os.mkdir("acid_evolve")
     os.chdir("acid_evolve")
     
-    #generate_images(iterations, prompt)
+    generate_images(iterations, prompt)
 
     print("\n\n\nPHASE 2: Image stitching to video")
 
     os.chdir("..")
     os.system(f"ffmpeg -framerate {framerate} -i acid_evolve/{filename}.%d.png output.mp4")
-
-    os.chdir("..")
-    os.chdir("..")
     
     print("DONE!")
 

@@ -53,5 +53,6 @@ def repeat(times, prompt):
 
     print("ALL GENERATIONS COMPLETE")
 
-chdir("big_sleep/results")
+chdir("results/generate")
+
 generate("psychidelic rainbow fire", 1000, 1, 1)

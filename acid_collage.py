@@ -44,21 +44,25 @@ def generate_images(repeat, iterations, prompt):
 
         dream()
 
-def generate_final(dimensions, iterations, prompt = "psychidelic rainbow fire"):
+def generate_final(dimensions, iterations, prompt = "psychidelic rainbow fire", generate_new = True):
+    print("Preparing")
+    
     image_count = dimensions ** 2
 
-    print("\n\n\nPHASE 1: Image generation")
-
-    os.chdir("big_sleep/results")
+    os.chdir("results")
     if "acid_trip" not in os.listdir("."):
-        print("making at dir")
+        print("Making acid_trip dir")
         os.mkdir("acid_trip")
     os.chdir("acid_trip")
     if "final" not in os.listdir("."):
-        print("making f dir")
+        print("Making final dir")
         os.mkdir("final")
 
-    #generate_images(image_count, iterations, prompt)
+    if generate_new:
+        print("\n\n\nPHASE 1: Image generation")
+        generate_images(image_count, iterations, prompt)
+    else:
+        print("\n\n\nPHASE 1 skipped")
 
     print("\n\n\nPHASE 2: Image stitching")
 
@@ -72,11 +76,8 @@ def generate_final(dimensions, iterations, prompt = "psychidelic rainbow fire"):
     print("Received final image, saving")
     os.chdir("final")
     image.save("final.png", "PNG")
-
-    for i in range(4):
-        os.chdir("..")
     
     print("DONE!")
 
 if __name__ == "__main__":
-    generate_final(8, 100, "psychidelic rainbow fire")
+    generate_final(8, 100, "psychidelic rainbow fire", True)
