@@ -49,7 +49,10 @@ def generate_final(dimensions, iterations, prompt = "psychidelic rainbow fire", 
     
     image_count = dimensions ** 2
 
-    os.chdir("results")
+    if "output" not in os.listdir("."):
+        print("Creating output directory")
+        os.mkdir("output")
+    os.chdir("output")
     if "acid_trip" not in os.listdir("."):
         print("Making acid_trip dir")
         os.mkdir("acid_trip")

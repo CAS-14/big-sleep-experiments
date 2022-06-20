@@ -25,7 +25,10 @@ def generate_final(seconds, prompt = "psychidelic rainbow fire", framerate = 30)
 
     print("\n\n\nPHASE 1: Image generation")
 
-    os.chdir("results")
+    if "output" not in os.listdir("."):
+        print("Creating output directory")
+        os.mkdir("output")
+    os.chdir("output")
     if "acid_evolve" not in os.listdir("."):
         print("Making acid_evolve directory")
         os.mkdir("acid_evolve")
