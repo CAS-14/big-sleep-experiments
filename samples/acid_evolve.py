@@ -29,19 +29,19 @@ def generate_final(seconds, prompt = "psychidelic rainbow fire", framerate = 30)
         print("Creating output directory")
         os.mkdir("output")
     os.chdir("output")
-    if "acid_evolve" not in os.listdir("."):
-        print("Making acid_evolve directory")
-        os.mkdir("acid_evolve")
-    os.chdir("acid_evolve")
+    if "evolve" not in os.listdir("."):
+        print("Making evolve directory")
+        os.mkdir("evolve")
+    os.chdir("evolve")
     
     generate_images(iterations, prompt)
 
     print("\n\n\nPHASE 2: Image stitching to video")
 
     os.chdir("..")
-    os.system(f"ffmpeg -framerate {framerate} -i acid_evolve/{filename}.%d.png output.mp4")
+    os.system(f"ffmpeg -framerate {framerate} -i evolve/{filename}.%d.png output.mp4")
     
     print("DONE!")
 
 if __name__ == "__main__":
-    generate_final(10, "psychidelic rainbow fire", 30)
+    generate_final(60, "cirno from touhou|anime girl|ice fairy", 30)

@@ -32,7 +32,7 @@ def generate(text, iterations = 100, epochs = 1, save_every = 50, text_min = "")
         text_min = text_min,
         seed = None,
         larger_clip = False,
-        image_size = 512,
+        image_size = 64,
         iterations = iterations,
         epochs = epochs,
         save_every = save_every,
@@ -53,6 +53,6 @@ def repeat(times, prompt):
 
     print("ALL GENERATIONS COMPLETE")
 
-chdir("results/generate")
-
-generate("psychidelic rainbow fire", 1000, 1, 1)
+if __name__ == "__main__":
+    chdir("output")
+    generate("green colors", 20, 1, 20)
